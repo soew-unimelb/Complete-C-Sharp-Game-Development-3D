@@ -6,14 +6,18 @@
     <Pads>
       <Pad Id="ProjectPad">
         <State name="__root__">
-          <Node name="2_Terminal_Hacker" expanded="True" selected="True" />
+          <Node name="2_Terminal_Hacker" expanded="True">
+            <Node name="Assets" expanded="True">
+              <Node name="Hacker.cs" selected="True" />
+            </Node>
+          </Node>
         </State>
       </Pad>
     </Pads>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.PinnedWatches />
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
-  <MonoDevelop.Ide.ItemProperties.Assembly-CSharp PreferredExecutionTarget="03861024-784e-407a-b357-5af5233e96aa" />
+  <MonoDevelop.Ide.ItemProperties.Assembly-CSharp PreferredExecutionTarget="f832da91-c867-464d-b010-3097fb0691a1" />
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
     <BreakpointStore>
       <Breakpoint file="/Users/wei/Downloads/One Drive/OneDrive - The University of Melbourne/Learning/Complete C# Unity Game Developer 3D/2_Terminal_Hacker/Assets/Hacker.cs" relfile="Assets/Hacker.cs" line="54" column="1" />
