@@ -1,17 +1,13 @@
 ﻿<Properties StartupConfiguration="{81328C18-17CF-B3F4-46D8-CC1DDC0FB7F0}|">
   <MonoDevelop.Ide.Workbench ActiveDocument="Assets/Hacker.cs">
     <Files>
-      <File FileName="Assets/Hacker.cs" Line="15" Column="1" />
-      <File FileName="Assets/WM2000/Display/Display.cs" />
+      <File FileName="Assets/Hacker.cs" Line="69" Column="21" />
     </Files>
     <Pads>
       <Pad Id="ProjectPad">
         <State name="__root__">
           <Node name="2_Terminal_Hacker" expanded="True">
             <Node name="Assets" expanded="True">
-              <Node name="WM2000" expanded="True">
-                <Node name="Display" expanded="True" />
-              </Node>
               <Node name="Hacker.cs" selected="True" />
             </Node>
           </Node>
@@ -21,7 +17,7 @@
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.PinnedWatches />
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
-  <MonoDevelop.Ide.ItemProperties.Assembly-CSharp PreferredExecutionTarget="4b77e4ee-4b61-473c-8995-2643f1b1b59b" />
+  <MonoDevelop.Ide.ItemProperties.Assembly-CSharp PreferredExecutionTarget="03861024-784e-407a-b357-5af5233e96aa" />
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
     <BreakpointStore />
   </MonoDevelop.Ide.DebuggingService.Breakpoints>
