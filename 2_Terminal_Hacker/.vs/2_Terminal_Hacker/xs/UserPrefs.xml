@@ -1,16 +1,12 @@
 ﻿<Properties StartupConfiguration="{81328C18-17CF-B3F4-46D8-CC1DDC0FB7F0}|">
   <MonoDevelop.Ide.Workbench ActiveDocument="Assets/Hacker.cs">
     <Files>
-      <File FileName="Assets/Hacker.cs" Line="69" Column="21" />
+      <File FileName="Assets/Hacker.cs" Line="75" Column="41" />
     </Files>
     <Pads>
       <Pad Id="ProjectPad">
         <State name="__root__">
-          <Node name="2_Terminal_Hacker" expanded="True">
-            <Node name="Assets" expanded="True">
-              <Node name="Hacker.cs" selected="True" />
-            </Node>
-          </Node>
+          <Node name="2_Terminal_Hacker" expanded="True" selected="True" />
         </State>
       </Pad>
     </Pads>
@@ -19,7 +15,9 @@
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
   <MonoDevelop.Ide.ItemProperties.Assembly-CSharp PreferredExecutionTarget="03861024-784e-407a-b357-5af5233e96aa" />
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
-    <BreakpointStore />
+    <BreakpointStore>
+      <Breakpoint file="/Users/wei/Downloads/One Drive/OneDrive - The University of Melbourne/Learning/Complete C# Unity Game Developer 3D/2_Terminal_Hacker/Assets/Hacker.cs" relfile="Assets/Hacker.cs" line="54" column="1" />
+    </BreakpointStore>
   </MonoDevelop.Ide.DebuggingService.Breakpoints>
   <MultiItemStartupConfigurations />
 </Properties>

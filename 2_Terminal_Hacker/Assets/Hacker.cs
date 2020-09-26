@@ -1,6 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class Hacker : MonoBehaviour {
 
@@ -66,10 +64,12 @@ public class Hacker : MonoBehaviour {
         currentScreen = Screen.Password;
         switch (level) {
             case 1:
-                password = level1Passwords[3];
+                int index = Random.Range(0, level1Passwords.Length);
+                password = level1Passwords[index];
                 break;
             case 2:
-                password = level2Passwords[2];
+                index = Random.Range(0, level2Passwords.Length);
+                password = level2Passwords[index];
                 break;
             default:
                 Debug.LogError("Invalid level number");
