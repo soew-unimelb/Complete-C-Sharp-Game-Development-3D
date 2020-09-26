@@ -67,12 +67,10 @@ public class Hacker : MonoBehaviour {
         currentScreen = Screen.Password;
         switch (level) {
             case 1:
-                int index1 = Random.Range(0, level1Passwords.Length);
-                password = level1Passwords[index1];
+                password = level1Passwords[Random.Range(0, level1Passwords.Length)];
                 break;
             case 2:
-                int index2 = Random.Range(0, level2Passwords.Length);
-                password = level2Passwords[index2];
+                password = level2Passwords[Random.Range(0, level2Passwords.Length)];
                 break;
             default:
                 Debug.LogError("Invalid level number");
