@@ -3,7 +3,8 @@
 public class Hacker : MonoBehaviour {
 
     // Game configuration data
-    string[] level1Passwords = { "books", "aisle", "self", "password", "font", "borrow" };
+    string menuHint = "You may type menu at any time.";
+    string[] level1Passwords = { "books", "aisle", "shelf", "password", "font", "borrow" };
     string[] level2Passwords = { "prisoner", "handcuffs", "holster", "uniform", "arrest" };
 
     // Game state
@@ -52,19 +53,27 @@ public class Hacker : MonoBehaviour {
         bool isValidLevel = (input == "1" || input == "2");
         if (isValidLevel) {
             level = int.Parse(input);
-            StartGame();
+            AskForPassword();
         }
         else if (input == "007") {
             Terminal.WriteLine("Please select a level, Mr.Bond.");
         }
         else {
             Terminal.WriteLine("Please choose a valid level.");
+            Terminal.WriteLine(menuHint);
         }
     }
 
-    void StartGame() {
+    void AskForPassword() {
 
         currentScreen = Screen.Password;
+        SetRandomPassword();
+        Terminal.ClearScreen();
+        Terminal.WriteLine("Enter your password, hint: " + password.Anagram());
+        Terminal.WriteLine(menuHint);
+    }
+
+    void SetRandomPassword() {
         switch (level) {
             case 1:
                 password = level1Passwords[Random.Range(0, level1Passwords.Length)];
@@ -76,8 +85,6 @@ public class Hacker : MonoBehaviour {
                 Debug.LogError("Invalid level number");
                 break;
         }
-        Terminal.ClearScreen();
-        Terminal.WriteLine("Please enter your password: ");
     }
 
     void CheckPassword(string input) {
@@ -85,7 +92,7 @@ public class Hacker : MonoBehaviour {
         if (input == password) {
             DisplayWinScreen();
         } else {
-            Terminal.WriteLine("Try again.");
+            AskForPassword();
         }
     }
 
@@ -94,6 +101,7 @@ public class Hacker : MonoBehaviour {
         currentScreen = Screen.Win;
         Terminal.ClearScreen();
         ShowLevelReward();
+        Terminal.WriteLine(menuHint);
     }
 
     void ShowLevelReward() {
