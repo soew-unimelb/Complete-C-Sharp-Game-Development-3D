@@ -3,9 +3,10 @@
 public class Hacker : MonoBehaviour {
 
     // Game configuration data
-    string menuHint = "You may type menu at any time.";
+    const string menuHint = "You may type menu at any time.";
     string[] level1Passwords = { "books", "aisle", "shelf", "password", "font", "borrow" };
     string[] level2Passwords = { "prisoner", "handcuffs", "holster", "uniform", "arrest" };
+    string[] level3Passwords = { "starfield", "telescope", "environment", "exploration", "astronauts" };
 
     // Game state
     int level;
@@ -15,11 +16,6 @@ public class Hacker : MonoBehaviour {
 
     void Start() {
         ShowMainMenu();
-    }
-
-    void Update() {
-        int index2 = Random.Range(0, level2Passwords.Length);
-        print(index2);
     }
 
     void ShowMainMenu() {
@@ -50,7 +46,7 @@ public class Hacker : MonoBehaviour {
 
     void RunMainMenu(string input) {
 
-        bool isValidLevel = (input == "1" || input == "2");
+        bool isValidLevel = (input == "1" || input == "2" || input == "3");
         if (isValidLevel) {
             level = int.Parse(input);
             AskForPassword();
@@ -80,6 +76,9 @@ public class Hacker : MonoBehaviour {
                 break;
             case 2:
                 password = level2Passwords[Random.Range(0, level2Passwords.Length)];
+                break;
+            case 3:
+                password = level3Passwords[Random.Range(0, level3Passwords.Length)];
                 break;
             default:
                 Debug.LogError("Invalid level number");
@@ -131,6 +130,17 @@ public class Hacker : MonoBehaviour {
   \______/        \______/
 "
                 );
+                Terminal.WriteLine("Play again for a greater challenge.");
+                break;
+            case 3:
+                Terminal.WriteLine("Welcome to NASA's internal system.");
+                Terminal.WriteLine(@"
+ _ __   __ _ ___  __ _
+| '_ \ / _` / __|/ _` |
+| | | | (_| \__ \ (_| |
+|_| |_|\__,_|___)\__,_|
+"
+ );
                 break;
             default:
                 Debug.LogError("Invalid level");
