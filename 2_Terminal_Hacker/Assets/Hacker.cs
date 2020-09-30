@@ -51,6 +51,10 @@ public class Hacker : MonoBehaviour {
             level = int.Parse(input);
             AskForPassword();
         }
+        else if (input == "quit" || input == "close" || input == "exit") {
+            Terminal.WriteLine("Close the tab if you are on the web.");
+            Application.Quit();
+        }
         else if (input == "007") {
             Terminal.WriteLine("Please select a level, Mr.Bond.");
         }
@@ -119,6 +123,7 @@ public class Hacker : MonoBehaviour {
                 break;
             case 2:
                 Terminal.WriteLine("Delete your crime...");
+                Terminal.WriteLine("Play again for a greater challenge.");
                 Terminal.WriteLine(@"
                                  __
                                  \ \
@@ -130,7 +135,6 @@ public class Hacker : MonoBehaviour {
   \______/        \______/
 "
                 );
-                Terminal.WriteLine("Play again for a greater challenge.");
                 break;
             case 3:
                 Terminal.WriteLine("Welcome to NASA's internal system.");
