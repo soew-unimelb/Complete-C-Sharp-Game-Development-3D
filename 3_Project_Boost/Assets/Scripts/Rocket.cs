@@ -23,6 +23,24 @@ public class Rocket : MonoBehaviour {
        Rotate();    
     }
 
+    private void OnCollisionEnter(Collision collision) {
+
+        print("Collided");
+
+        switch (collision.gameObject.tag) {
+
+            case "Friendly":
+                print("OK"); // TODO remove
+                break;
+            case "Fuel":
+                print("Fuel");
+                break;
+            default:
+                print("Dead");
+                break;
+        }
+    }
+
     private void Thrust() {
 
         float thrustingThisFrame = mainThrust * Time.deltaTime;
@@ -35,7 +53,7 @@ public class Rocket : MonoBehaviour {
             if (!audioSource.isPlaying) {
                 audioSource.Play();
             }
-            print("Thrusting");
+            //print("Thrusting");
         }
         // Stop audio when it is not thrusting
         else {
@@ -53,11 +71,11 @@ public class Rocket : MonoBehaviour {
         // Rotate left and right in z-axis
         if (Input.GetKey(KeyCode.A)) {
             transform.Rotate(Vector3.forward * rotationThisFrame);
-            print("Rotating left");
+            //print("Rotating left");
         }
         else if (Input.GetKey(KeyCode.D)) {
             transform.Rotate(Vector3.back * rotationThisFrame);
-            print("Rotating right");
+            //print("Rotating right");
         }
 
         // Resume physics control of rotation

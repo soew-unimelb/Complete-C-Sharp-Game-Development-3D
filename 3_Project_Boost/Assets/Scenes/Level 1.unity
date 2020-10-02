@@ -519,6 +519,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Terrain
       objectReference: {fileID: 0}
+    - target: {fileID: 6001747358189559471, guid: 37fb47ab9ed9b40c8b30d6d3a618b746,
+        type: 3}
+      propertyPath: m_TagString
+      value: Untagged
+      objectReference: {fileID: 0}
     - target: {fileID: 6001747358189559507, guid: 37fb47ab9ed9b40c8b30d6d3a618b746,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -642,6 +647,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Launch Pad
+      objectReference: {fileID: 0}
+    - target: {fileID: 8549488993684079087, guid: 71078ca8fbd33420ebd323faea0c6ca1,
+        type: 3}
+      propertyPath: m_TagString
+      value: Friendly
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 71078ca8fbd33420ebd323faea0c6ca1, type: 3}
