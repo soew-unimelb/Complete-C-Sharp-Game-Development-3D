@@ -9,15 +9,18 @@ public class Rocket : MonoBehaviour {
     private AudioSource audioSource;
 
     private void Start() {
+
         rigidBody = GetComponent<Rigidbody>();
         audioSource = GetComponent<AudioSource>();
     }
 
     private void Update() {
-        ProcessInput();    
+
+       Thrust();
+       Rotate();    
     }
 
-    private void ProcessInput() {
+    private void Thrust() {
 
         // Can thrust while rotating
         if (Input.GetKey(KeyCode.Space)) {
@@ -33,6 +36,12 @@ public class Rocket : MonoBehaviour {
         else {
             audioSource.Stop();
         }
+    }
+
+    private void Rotate() {
+
+        // Take manual control of rotation
+        rigidBody.freezeRotation = true;
 
         // Rotate left and right in z-axis
         if (Input.GetKey(KeyCode.A)) {
@@ -43,5 +52,8 @@ public class Rocket : MonoBehaviour {
             transform.Rotate(Vector3.back);
             print("Rotating right");
         }
+
+        // Resume physics control of rotation
+        rigidBody.freezeRotation = false;
     }
 }
