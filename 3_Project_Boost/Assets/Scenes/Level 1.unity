@@ -203,6 +203,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1218963772, guid: 8530fb359eed4435a86c543068982a3b, type: 3}
+      propertyPath: m_UseGravity
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 539699232161818212, guid: 8530fb359eed4435a86c543068982a3b,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -808,7 +812,7 @@ PrefabInstance:
     - target: {fileID: 9212357989572126854, guid: b01a0d34f490544fb94a9102a90a7d5e,
         type: 3}
       propertyPath: m_Name
-      value: BackDrop
+      value: Backdrop
       objectReference: {fileID: 0}
     - target: {fileID: 9212357989572126874, guid: b01a0d34f490544fb94a9102a90a7d5e,
         type: 3}
