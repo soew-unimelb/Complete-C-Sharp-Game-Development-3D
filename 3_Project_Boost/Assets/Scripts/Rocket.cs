@@ -33,10 +33,11 @@ public class Rocket : MonoBehaviour {
                 print("OK"); // TODO remove
                 break;
             case "Fuel":
-                print("Fuel");
+                print("Fuel"); // TODO remove
                 break;
             default:
-                print("Dead");
+                print("Dead"); // TODO remove
+                // TODO kill player
                 break;
         }
     }
