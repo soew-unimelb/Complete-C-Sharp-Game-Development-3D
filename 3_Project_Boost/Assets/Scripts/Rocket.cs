@@ -5,8 +5,10 @@ using UnityEngine;
 
 public class Rocket : MonoBehaviour {
 
+    private Rigidbody rigidBody;
+
     private void Start() {
-        
+        rigidBody = GetComponent<Rigidbody>();
     }
 
     private void Update() {
@@ -17,6 +19,7 @@ public class Rocket : MonoBehaviour {
 
         // Can thrust while rotating
         if (Input.GetKey(KeyCode.Space)) {
+            rigidBody.AddRelativeForce(Vector3.up);
             print("Thrusting");
         }
 
