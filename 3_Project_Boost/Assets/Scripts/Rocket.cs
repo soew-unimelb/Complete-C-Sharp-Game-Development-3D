@@ -76,6 +76,7 @@ public class Rocket : MonoBehaviour {
         mainEngineParticles.Play();
     }
 
+
     private void OnCollisionEnter(Collision collision) {
 
         // Ignore collisions when not alive.
