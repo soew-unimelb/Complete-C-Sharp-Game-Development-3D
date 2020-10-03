@@ -638,7 +638,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   movementVector: {x: 20, y: 0, z: 0}
-  period: 2
+  period: 5
   movementFactor: 0
 --- !u!1001 &916564699
 PrefabInstance:
