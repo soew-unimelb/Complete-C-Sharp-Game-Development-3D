@@ -5,9 +5,14 @@ public class Rocket : MonoBehaviour {
 
     [SerializeField] private float rcsThrust = 100f;
     [SerializeField] private float mainThrust = 800f;
+
     [SerializeField] private AudioClip mainEngine;
     [SerializeField] private AudioClip death;
     [SerializeField] private AudioClip success;
+
+    [SerializeField] private ParticleSystem mainEngineParticles;
+    [SerializeField] private ParticleSystem deathParticles;
+    [SerializeField] private ParticleSystem successParticles;
 
     private Rigidbody rigidBody;
     private AudioSource audioSource;
@@ -22,7 +27,6 @@ public class Rocket : MonoBehaviour {
     }
 
     private void Update() {
-       // TODO somewhere stop sound on death
        // Can control only when player is alive
        if (state == State.Alive) {
             RespondToThrustInput();
@@ -36,7 +40,10 @@ public class Rocket : MonoBehaviour {
             ApplyThrust();
         }
         // Stop audio when it is not thrusting
-        else { audioSource.Stop(); }
+        else {
+            audioSource.Stop();
+            mainEngineParticles.Stop();
+        }
     }
     private void RespondToRotateInput() {
 
@@ -65,6 +72,7 @@ public class Rocket : MonoBehaviour {
         if (!audioSource.isPlaying) {
             audioSource.PlayOneShot(mainEngine);
         }
+        mainEngineParticles.Play();
     }
 
     private void OnCollisionEnter(Collision collision) {
@@ -91,12 +99,14 @@ public class Rocket : MonoBehaviour {
         state = State.Transcending;
         audioSource.Stop();
         audioSource.PlayOneShot(success);
+        successParticles.Play();
         Invoke("LoadNextLevel", 1f); // TODO parameterise time
     }
     private void StartDeathSequence() {
         state = State.Dying;
         audioSource.Stop();
         audioSource.PlayOneShot(death);
+        deathParticles.Play();
         Invoke("LoadFirstLevel", 1f);
     }
     private void LoadNextLevel() {
