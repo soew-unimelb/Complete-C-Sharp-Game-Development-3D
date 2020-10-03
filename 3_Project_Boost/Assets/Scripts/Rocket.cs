@@ -1,7 +1,5 @@
-﻿using System;
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class Rocket : MonoBehaviour {
 
@@ -11,6 +9,10 @@ public class Rocket : MonoBehaviour {
     private Rigidbody rigidBody;
     private AudioSource audioSource;
 
+    // Game States
+    private enum State { Alive, Dying, Transcending };
+    private State state = State.Alive;
+
     private void Start() {
 
         rigidBody = GetComponent<Rigidbody>();
@@ -18,30 +20,13 @@ public class Rocket : MonoBehaviour {
     }
 
     private void Update() {
-
-       Thrust();
-       Rotate();    
-    }
-
-    private void OnCollisionEnter(Collision collision) {
-
-        print("Collided");
-
-        switch (collision.gameObject.tag) {
-
-            case "Friendly":
-                print("OK"); // TODO remove
-                break;
-            case "Fuel":
-                print("Fuel"); // TODO remove
-                break;
-            default:
-                print("Dead"); // TODO remove
-                // TODO kill player
-                break;
+       // TODO somewhere stop sound on death
+       // Can control only when player is alive
+       if (state == State.Alive) {
+            Thrust();
+            Rotate();
         }
     }
-
     private void Thrust() {
 
         float thrustingThisFrame = mainThrust * Time.deltaTime;
@@ -54,32 +39,58 @@ public class Rocket : MonoBehaviour {
             if (!audioSource.isPlaying) {
                 audioSource.Play();
             }
-            //print("Thrusting");
         }
         // Stop audio when it is not thrusting
         else {
             audioSource.Stop();
         }
     }
-
     private void Rotate() {
 
         // Take manual control of rotation
         rigidBody.freezeRotation = true;
 
+        // Rotate left and right in z-axis
         float rotationThisFrame = rcsThrust * Time.deltaTime;
 
-        // Rotate left and right in z-axis
         if (Input.GetKey(KeyCode.A)) {
             transform.Rotate(Vector3.forward * rotationThisFrame);
-            //print("Rotating left");
         }
         else if (Input.GetKey(KeyCode.D)) {
             transform.Rotate(Vector3.back * rotationThisFrame);
-            //print("Rotating right");
         }
 
         // Resume physics control of rotation
         rigidBody.freezeRotation = false;
+    }
+
+    private void OnCollisionEnter(Collision collision) {
+
+        // Do nothing when player is not alive
+        if (state != State.Alive) { return; }
+
+        switch (collision.gameObject.tag) {
+
+            case "Friendly":
+                // Do nothing
+                break;
+
+            case "Finish":
+                state = State.Transcending;
+                Invoke("LoadNextLevel", 1f); // TODO parameterise time
+                break;
+
+            default:
+                print("Hit something deadly");
+                state = State.Dying;
+                Invoke("LoadFirstLevel", 1f);
+                break;
+        }
+    }
+    private void LoadNextLevel() {
+        SceneManager.LoadScene(1); // TODO allow for more than 2 levels
+    }
+    private void LoadFirstLevel() {
+        SceneManager.LoadScene(0);
     }
 }
