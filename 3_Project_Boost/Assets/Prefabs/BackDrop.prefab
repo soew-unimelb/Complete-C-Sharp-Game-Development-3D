@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 9212357989572126852}
   - component: {fileID: 9212357989572126855}
   m_Layer: 0
-  m_Name: BackDrop
+  m_Name: Backdrop
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -28,7 +28,7 @@ Transform:
   m_GameObject: {fileID: 9212357989572126854}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 8.35, z: 15.63}
-  m_LocalScale: {x: 109.956406, y: 60.407978, z: 2.0935}
+  m_LocalScale: {x: 191.11523, y: 141.11908, z: 2.0935}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -59,7 +59,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10303, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: 72814daa7cc01489db3c9fb2b9ca8c72, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
