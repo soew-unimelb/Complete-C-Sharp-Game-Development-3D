@@ -451,7 +451,7 @@ MonoBehaviour:
   success: {fileID: 8300000, guid: b5f9e85f40ff743f19fc4036b9837559, type: 3}
   mainEngineParticles: {fileID: 198100718303482521}
   deathParticles: {fileID: 198204746793039069}
-  successParticles: {fileID: 0}
+  successParticles: {fileID: 8756893006560908814}
 --- !u!1 &539699232555381052
 GameObject:
   m_ObjectHideFlags: 0
@@ -929,6 +929,12 @@ PrefabInstance:
 --- !u!4 &8883780986997443032 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4100699973242056, guid: 62198a3a5dbb64a4f9e1618929224faa,
+    type: 3}
+  m_PrefabInstance: {fileID: 8883093176121181456}
+  m_PrefabAsset: {fileID: 0}
+--- !u!198 &8756893006560908814 stripped
+ParticleSystem:
+  m_CorrespondingSourceObject: {fileID: 198631066050499358, guid: 62198a3a5dbb64a4f9e1618929224faa,
     type: 3}
   m_PrefabInstance: {fileID: 8883093176121181456}
   m_PrefabAsset: {fileID: 0}
