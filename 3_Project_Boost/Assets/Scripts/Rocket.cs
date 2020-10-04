@@ -124,7 +124,12 @@ public class Rocket : MonoBehaviour {
         Invoke("LoadFirstLevel", levelLoadDelay);
     }
     private void LoadNextLevel() {
-        SceneManager.LoadScene(1); // TODO allow for more than 2 levels
+
+        int currentSceneIndex = SceneManager.GetActiveScene().buildIndex;
+        int totalScenes = SceneManager.sceneCountInBuildSettings;
+        int nextSceneIndex = (currentSceneIndex + 1) % totalScenes;
+        
+        SceneManager.LoadScene(nextSceneIndex);
     }
     private void LoadFirstLevel() {
         SceneManager.LoadScene(0);
