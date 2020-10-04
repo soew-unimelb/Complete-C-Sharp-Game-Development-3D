@@ -19,8 +19,7 @@ public class Rocket : MonoBehaviour {
     private AudioSource audioSource;
 
     // Game States
-    private enum State { Alive, Dying, Transcending };
-    private State state = State.Alive;
+    private bool isTransitioning = false;
     private bool collisionsDisabled = false;
 
     private void Start() {
@@ -30,7 +29,7 @@ public class Rocket : MonoBehaviour {
 
     private void Update() {
         // Can control only when player is alive
-        if (state == State.Alive) {
+        if (!isTransitioning) {
             RespondToThrustInput();
             RespondToRotateInput();
         }
@@ -43,16 +42,14 @@ public class Rocket : MonoBehaviour {
         if (Input.GetKey(KeyCode.Space)) {
             ApplyThrust();
         }
-        // Stop audio when it is not thrusting
         else {
-            audioSource.Stop();
-            mainEngineParticles.Stop();
+            StopApplyingThrust();
         }
     }
     private void RespondToRotateInput() {
 
-        // Take manual control of rotation
-        rigidBody.freezeRotation = true;
+        // remove rotation due to physics
+        rigidBody.angularVelocity = Vector3.zero;
 
         // Rotate left and right in z-axis
         float rotationThisFrame = rcsThrust * Time.deltaTime;
@@ -63,9 +60,6 @@ public class Rocket : MonoBehaviour {
         else if (Input.GetKey(KeyCode.D)) {
             transform.Rotate(Vector3.back * rotationThisFrame);
         }
-
-        // Resume physics control of rotation
-        rigidBody.freezeRotation = false;
     }
     private void ApplyThrust() {
 
@@ -77,6 +71,11 @@ public class Rocket : MonoBehaviour {
             audioSource.PlayOneShot(mainEngine);
         }
         mainEngineParticles.Play();
+    }
+    private void StopApplyingThrust() {
+
+        audioSource.Stop();
+        mainEngineParticles.Stop();
     }
     private void RespondToDebugKeys() {
 
@@ -92,7 +91,7 @@ public class Rocket : MonoBehaviour {
     private void OnCollisionEnter(Collision collision) {
 
         // Ignore collisions when not alive or when it is diabled
-        if (state != State.Alive || collisionsDisabled) { return; } // TODO to check
+        if (isTransitioning || collisionsDisabled) { return; } // TODO to check
 
         switch (collision.gameObject.tag) {
 
@@ -110,14 +109,16 @@ public class Rocket : MonoBehaviour {
         }
     }
     private void StartSuccessSequence() {
-        state = State.Transcending;
+
+        isTransitioning = true;
         audioSource.Stop();
         audioSource.PlayOneShot(success);
         successParticles.Play();
         Invoke("LoadNextLevel", levelLoadDelay);
     }
     private void StartDeathSequence() {
-        state = State.Dying;
+
+        isTransitioning = true;
         audioSource.Stop();
         audioSource.PlayOneShot(death);
         deathParticles.Play();
